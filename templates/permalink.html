@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <a href="/">all posts</a><br>
+    <h2 data-id="{{entry.key.id()}}">{{ entry.subject }}</h2>
+    <p>{{ entry.content_as_html()|safe }}</p>
+
+{% endblock %}

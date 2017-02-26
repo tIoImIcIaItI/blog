@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="/newpost">new post</a>
+
+<h2>Recent Posts</h2>
+<ul>
+    {% for entry in entries %}
+    <li>
+        <h3><a href="/posts/{{ entry.key.id() }}">{{ entry.subject }}</a></h3>
+
+        {{ entry.content_as_html()|safe }}
+        <br>
+
+        <form action="/posts/{{entry.key.id()}}/delete" method="POST">
+            <input type="hidden" name="id" value="{{entry.key.id()}}" />
+            <button type="submit">delete</button>
+        </form>
+
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
